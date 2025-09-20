@@ -1,3 +1,5 @@
+using _23WebC_Nhom4.Middleware;
+
 namespace _23WebC_Nhom4
 {
     public class Program
@@ -30,6 +32,7 @@ namespace _23WebC_Nhom4
 
             app.UseAuthorization();
 
+            app.UseMiddleware<RequestLog>(); // Thêm middleware RequestLog
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
