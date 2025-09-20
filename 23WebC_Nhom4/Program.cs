@@ -8,7 +8,11 @@ namespace _23WebC_Nhom4
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Configuration.AddJsonFile("myappsetting.json", optional: false, reloadOnChange: true); //add file myappsetting.json vào
 
+            // Lấy section "myAppSettings"
+            builder.Services.Configure<MyAppSetting>
+                (builder.Configuration.GetSection("MyAppSettings"));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -29,6 +33,12 @@ namespace _23WebC_Nhom4
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.MapGet("/", (IConfiguration config) =>
+            {
+                var maxFileSize = config["MyAppSettings:MaxFileSize"];
+                return $"MaxFileSize = {maxFileSize}"; //in ra man hinh max file size
+            });
+app.Run();
 
             app.Run();
         }
