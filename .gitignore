@@ -1,0 +1,21 @@
+# .NET Core  
+bin/  
+obj/  
+*.csproj.user  
+*.log  
+request.log  
+users.json  
+.vs/  
+# Visual Studio temporary files  
+*.suo  
+*.user  
+*.sln.docstates  
+# NuGet Packages  
+*.nupkg  
+# Build output  
+/publish/  
+# MacOS  
+.DS_Store  
+# Additional for ASP.NET Core  
+appsettings.json  
+appsettings.*.json 
